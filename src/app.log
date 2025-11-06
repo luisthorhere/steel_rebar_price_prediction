@@ -1,0 +1,128 @@
+2025-11-06 09:26:37,330 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:29:09,722 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:30:34,638 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:30:54,959 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:33:15,137 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:36:44,081 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:37:03,693 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:38:36,772 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:38:48,049 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:39:18,140 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:39:26,214 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:39:49,204 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:52:27,354 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:57:21,626 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:58:19,879 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 09:58:39,863 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:03:34,700 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:06:31,863 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:06:37,249 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:08:05,917 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:08:29,533 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-06 10:08:29,534 - SteelRebarPricePrediction - INFO - prediction_date=datetime.date(2025, 11, 6) predicted_price_usd_per_ton=None currency='USD' unit='metric ton' model_confidence=None timestamp=datetime.datetime(2025, 11, 6, 16, 8, 29, 534471, tzinfo=datetime.timezone.utc)
+2025-11-06 10:09:07,092 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:09:35,373 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-06 10:09:44,800 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-06 10:09:47,079 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-06 10:09:48,655 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 2
+2025-11-06 10:09:58,670 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 3
+2025-11-06 10:10:22,903 - SteelRebarPricePrediction - INFO - Invalid API_KEY: DeAcer
+2025-11-06 10:10:31,731 - SteelRebarPricePrediction - INFO - Invalid API_KEY: DeAcer
+2025-11-06 10:10:33,387 - SteelRebarPricePrediction - INFO - Invalid API_KEY: DeAcer
+2025-11-06 10:11:11,473 - SteelRebarPricePrediction - INFO - Invalid API_KEY: DeAcer
+2025-11-06 10:12:45,639 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 4
+2025-11-06 10:13:01,531 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 5
+2025-11-06 10:13:04,579 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 6
+2025-11-06 10:13:04,769 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 7
+2025-11-06 10:13:04,959 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 8
+2025-11-06 10:13:05,121 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 9
+2025-11-06 10:13:05,278 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 10
+2025-11-06 10:13:05,462 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 11
+2025-11-06 10:13:05,644 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 12
+2025-11-06 10:13:06,004 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 13
+2025-11-06 10:13:06,178 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 14
+2025-11-06 10:13:06,362 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 15
+2025-11-06 10:13:06,567 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 16
+2025-11-06 10:13:06,722 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 17
+2025-11-06 10:13:06,908 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 18
+2025-11-06 10:13:07,091 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 19
+2025-11-06 10:13:07,282 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 20
+2025-11-06 10:13:07,457 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 21
+2025-11-06 10:13:07,650 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 22
+2025-11-06 10:13:07,837 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 23
+2025-11-06 10:13:08,037 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 24
+2025-11-06 10:13:08,230 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 25
+2025-11-06 10:13:08,431 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 26
+2025-11-06 10:13:08,632 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 27
+2025-11-06 10:13:08,826 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 28
+2025-11-06 10:13:09,026 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 29
+2025-11-06 10:13:09,216 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 30
+2025-11-06 10:13:09,416 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 31
+2025-11-06 10:13:09,620 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 32
+2025-11-06 10:13:09,824 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 33
+2025-11-06 10:13:10,023 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 34
+2025-11-06 10:13:10,222 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 35
+2025-11-06 10:13:10,434 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 36
+2025-11-06 10:13:10,638 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 37
+2025-11-06 10:13:10,849 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 38
+2025-11-06 10:13:11,067 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 39
+2025-11-06 10:13:11,279 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 40
+2025-11-06 10:13:11,470 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 41
+2025-11-06 10:13:11,674 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 42
+2025-11-06 10:13:11,889 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 43
+2025-11-06 10:13:12,105 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 44
+2025-11-06 10:13:12,300 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 45
+2025-11-06 10:13:12,508 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 46
+2025-11-06 10:13:12,897 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 47
+2025-11-06 10:13:13,089 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 48
+2025-11-06 10:13:13,305 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 49
+2025-11-06 10:13:13,505 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 50
+2025-11-06 10:13:13,730 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 51
+2025-11-06 10:13:13,932 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 52
+2025-11-06 10:13:14,153 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 53
+2025-11-06 10:13:14,362 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 54
+2025-11-06 10:13:14,572 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 55
+2025-11-06 10:13:14,783 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 56
+2025-11-06 10:13:14,998 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 57
+2025-11-06 10:13:15,214 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 58
+2025-11-06 10:13:15,440 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 59
+2025-11-06 10:13:15,641 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 60
+2025-11-06 10:13:15,855 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 61
+2025-11-06 10:13:16,060 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 62
+2025-11-06 10:13:16,286 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 63
+2025-11-06 10:13:16,502 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 64
+2025-11-06 10:13:16,723 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 65
+2025-11-06 10:13:16,938 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 66
+2025-11-06 10:13:17,148 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 67
+2025-11-06 10:13:17,355 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 68
+2025-11-06 10:13:17,575 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 69
+2025-11-06 10:13:17,800 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 70
+2025-11-06 10:13:17,993 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 71
+2025-11-06 10:13:18,231 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 72
+2025-11-06 10:13:18,461 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 73
+2025-11-06 10:13:18,676 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 74
+2025-11-06 10:13:18,895 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 75
+2025-11-06 10:13:19,115 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 76
+2025-11-06 10:13:19,351 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 77
+2025-11-06 10:13:19,568 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 78
+2025-11-06 10:13:19,790 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 79
+2025-11-06 10:13:19,984 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 80
+2025-11-06 10:13:20,226 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 81
+2025-11-06 10:13:20,462 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 82
+2025-11-06 10:13:20,694 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 83
+2025-11-06 10:13:20,907 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 84
+2025-11-06 10:13:21,124 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 85
+2025-11-06 10:13:21,342 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 86
+2025-11-06 10:13:21,575 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 87
+2025-11-06 10:13:21,787 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 88
+2025-11-06 10:13:22,008 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 89
+2025-11-06 10:13:22,221 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 90
+2025-11-06 10:13:22,443 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 91
+2025-11-06 10:13:22,671 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 92
+2025-11-06 10:13:22,864 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 93
+2025-11-06 10:13:23,103 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 94
+2025-11-06 10:13:23,310 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 95
+2025-11-06 10:13:23,545 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 96
+2025-11-06 10:13:23,766 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 97
+2025-11-06 10:13:23,969 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 98
+2025-11-06 10:13:24,208 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 99

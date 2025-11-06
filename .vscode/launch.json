@@ -7,7 +7,7 @@
       "request": "launch",
       "module": "uvicorn",
       "cwd": "${workspaceFolder}/src",
-      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "python": "${workspaceFolder}/venv/Scripts/python.exe",
       "justMyCode": true,
       "args": [
         "main:app",
