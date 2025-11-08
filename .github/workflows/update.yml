@@ -5,6 +5,10 @@ on:
     - cron: '0 3 * * *'  # Corre todos los días a las 03:00 UTC
   workflow_dispatch:
 
+# Permisos mínimos (auth con credentials_json no requiere id-token)
+permissions:
+  contents: read
+
 concurrency:
   group: update-model
   cancel-in-progress: true
@@ -12,11 +16,15 @@ concurrency:
 jobs:
   update-model:
     runs-on: ubuntu-latest
+
+    # Variables de entorno que usará todo el job
     env:
-      # Project ID (opcional para libs que lo lean de env)
+      # Project ID (algunas libs lo leen de aquí)
       GOOGLE_CLOUD_PROJECT: deacero-api
-      # Nombre del bucket; guardaste esto en el secret GCP_CLOUD_STORAGE
+      # Nombre del bucket desde Repository secrets
       GCS_BUCKET: ${{ secrets.GCP_CLOUD_STORAGE }}
+      # Para logs sin buffer en Python
+      PYTHONUNBUFFERED: "1"
 
     steps:
       - name: Checkout repo
@@ -27,17 +35,23 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
-          cache-dependency-path: |
-            requirements.txt
+          cache-dependency-path: requirements.txt
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Si ya tienes todo en requirements.txt, puedes omitir las líneas extra
           pip install -r requirements.txt
+          # Si ya está en requirements.txt, estas se omiten, pero no estorban:
           pip install google-cloud-storage pandas scikit-learn
 
-      # Autenticación con la Service Account (clave JSON pegada en el secret GCP_SA_KEY)
+      # Validación temprana: verifica que los secrets estén presentes
+      - name: Preflight - check required secrets and env
+        run: |
+          test -n "${{ secrets.GCP_SA_KEY }}" || { echo "::error::Falta Repository secret GCP_SA_KEY"; exit 1; }
+          test -n "${{ secrets.GCP_CLOUD_STORAGE }}" || { echo "::error::Falta Repository secret GCP_CLOUD_STORAGE (nombre del bucket)"; exit 1; }
+          echo "[OK] Secrets presentes. Bucket: $GCS_BUCKET"
+
+      # Autenticación con la Service Account usando el JSON del secret
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
@@ -52,13 +66,13 @@ jobs:
 
           bucket_name = os.environ.get("GCS_BUCKET")
           if not bucket_name:
-            raise SystemExit("GCS_BUCKET no está definido (revisa tu secret GCP_CLOUD_STORAGE).")
+            raise SystemExit("GCS_BUCKET no está definido (revisa tu Repository secret GCP_CLOUD_STORAGE).")
 
           client = storage.Client()
-          # Get bucket metadata to ensure access
+          # Consultar metadatos para confirmar acceso
           bucket = client.bucket(bucket_name)
-          _ = bucket.labels  # acceso a metadatos
-          # Listar hasta 5 objetos para ver que responde
+          _ = bucket.labels  # acceso a metadatos sin listar todo
+          # Listar hasta 5 objetos
           names = [b.name for b in client.list_blobs(bucket_name, max_results=5)]
           print(f"[OK] Acceso a gs://{bucket_name}. Ejemplos: {names}")
           EOF
@@ -90,19 +104,18 @@ jobs:
           client = storage.Client()
           bucket = client.bucket(BUCKET_NAME)
 
-          missing = []
+          uploaded = 0
           for file_name in FILES_TO_UPLOAD:
             if not os.path.exists(file_name):
               print(f"[WARN] {file_name} no existe; se omite.")
-              missing.append(file_name)
               continue
             blob = bucket.blob(file_name)
             blob.upload_from_filename(file_name)
             print(f"[OK] Subido: gs://{BUCKET_NAME}/{file_name}")
+            uploaded += 1
 
-          # Si nada se subió, marca como warning pero no falla el job
-          if len(missing) == len(FILES_TO_UPLOAD):
-            print("::warning::No se encontró ningún archivo para subir (revisa la salida de update_data.py)")
+          if uploaded == 0:
+            print("::warning::No se subió ningún archivo (revisa la salida de update_data.py y FILES_TO_UPLOAD)")
           EOF
 
       # (Opcional) Publica logs/artefactos locales si algo falla
