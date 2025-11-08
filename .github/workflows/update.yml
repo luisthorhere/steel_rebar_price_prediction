@@ -1,0 +1,59 @@
+name: Update Steel Rebar Model
+
+# Se ejecuta todos los días a las 3:00 AM UTC y también permite ejecución manual
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-model:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clonar el repositorio
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # 2. Configurar Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install google-cloud-storage pandas scikit-learn
+
+      # 4. Autenticar en GCP usando la cuenta de servicio de GitHub Actions
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # 5. Ejecutar el script que actualiza datos y reentrena el modelo
+      - name: Run update_data script
+        run: |
+          python scripts/update_data.py
+
+      # 6. Subir archivos al bucket de GCP
+      - name: Upload model and data to GCS
+        run: |
+          python - <<EOF
+          from google.cloud import storage
+          import os
+
+          BUCKET_NAME = "deacero_steel_rebar_models"
+          FILES_TO_UPLOAD = ["model.pkl", "rebar_data.csv"]
+
+          client = storage.Client()
+          bucket = client.get_bucket(BUCKET_NAME)
+
+          for file_name in FILES_TO_UPLOAD:
+              blob = bucket.blob(file_name)
+              blob.upload_from_filename(file_name)
+              print(f"Uploaded {file_name} to gs://{BUCKET_NAME}/{file_name}")
+          EOF
