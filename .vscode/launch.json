@@ -2,19 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "FastAPI: main.py with Uvicorn",
+      "name": "FastAPI: app.main with Uvicorn",
       "type": "debugpy",
       "request": "launch",
       "module": "uvicorn",
-      "cwd": "${workspaceFolder}/src",
-      "python": "${workspaceFolder}/venv/Scripts/python.exe",
+      "cwd": "${workspaceFolder}",
       "justMyCode": true,
       "args": [
-        "main:app",
+        "app.main:app",
         "--reload",
         "--host", "127.0.0.1",
         "--port", "8009"
-      ],
+      ]
     }
   ]
 }

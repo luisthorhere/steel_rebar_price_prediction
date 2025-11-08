@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
 from datetime import datetime, timezone
-from config.config import SETTINGS
-from logger.logger import logger
+from ..config.config import SETTINGS
+from ..logger.logger import logger
 
 request_counters = {}
 
@@ -23,5 +23,5 @@ def check_rate_limit(api_key: str):
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             detail="Rate limit exceeded (100 requests/hour). Try again later.",
         )
-    logger.info(f"API_KEY: {api_key} Request made during the last hour: {data["count"]}")
+    logger.info(f"API_KEY: {api_key} Request made during the last hour: {data['count']}")
     data["count"] += 1

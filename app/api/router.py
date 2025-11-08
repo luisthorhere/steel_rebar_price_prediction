@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Request
-from model.predict import steel_price_prediction
+from ..model.predict import steel_price_prediction
 from .schema import SteelRebarPriceResponse
 from .dependencies import verify_api_key
 

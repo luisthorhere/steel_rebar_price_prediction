@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 from pydantic import Field, AliasPath
 from pathlib import Path
 import yaml
-from logger.logger import logger
+from ..logger.logger import logger
 
 class YamlConfiguration:
     def __init__(self):

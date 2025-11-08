@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Response
-from api.router import router as steel_rebar_price
 from datetime import datetime, timezone
+from app.api.router import router as steel_rebar_price
+
 
 app = FastAPI(
     title="Residency Car Access API",
