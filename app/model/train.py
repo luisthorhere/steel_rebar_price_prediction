@@ -24,10 +24,8 @@ from ..data.get_data import (
 )
 
 
-# Duración del caché en segundos (1 hora = 3600)
 CACHE_TTL = 3600  
 
-# Variables globales para caché manual
 _cached_prediction = None
 _cache_timestamp = 0
 
