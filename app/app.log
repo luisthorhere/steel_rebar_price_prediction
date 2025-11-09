@@ -368,3 +368,253 @@
 2025-11-09 12:02:55,906 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
 2025-11-09 12:02:57,762 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 10
 2025-11-09 12:02:57,762 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:12:05,045 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:12:18,005 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-09 12:12:18,006 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:12:43,990 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-09 12:12:43,993 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:15:04,505 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:15:10,653 - SteelRebarPricePrediction - INFO - Steel rebar data loaded
+2025-11-09 12:15:12,053 - SteelRebarPricePrediction - INFO - Downloading hot_rolled_coil data
+2025-11-09 12:15:12,567 - SteelRebarPricePrediction - INFO - Downloading iron_ore data
+2025-11-09 12:15:13,177 - SteelRebarPricePrediction - INFO - Downloading usd_mxn data
+2025-11-09 12:15:13,598 - SteelRebarPricePrediction - INFO - Downloading coal data
+2025-11-09 12:15:13,640 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-09 12:15:14,056 - SteelRebarPricePrediction - INFO - MAE RF: 24.7985
+2025-11-09 12:15:14,057 - SteelRebarPricePrediction - INFO - MAPE RF: 4.53%
+2025-11-09 12:15:14,057 - SteelRebarPricePrediction - INFO - R2 RF: -2.9733
+2025-11-09 12:15:14,107 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-09 12:15:24,646 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-09 12:15:24,647 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:15:43,807 - SteelRebarPricePrediction - INFO - hot_rolled_coil: 879.0000 (último cierre 2025-11-07)
+2025-11-09 12:15:44,176 - SteelRebarPricePrediction - INFO - iron_ore: 103.3400 (último cierre 2025-11-07)
+2025-11-09 12:15:44,525 - SteelRebarPricePrediction - INFO - usd_mxn: 18.4525 (último cierre 2025-11-09)
+2025-11-09 12:15:44,919 - SteelRebarPricePrediction - INFO - coal: 22.9050 (último cierre 2025-11-07)
+2025-11-09 12:15:44,930 - SteelRebarPricePrediction - INFO - Recalculated prediction, saving on cache.
+2025-11-09 12:15:44,931 - SteelRebarPricePrediction - INFO - JSON: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.1 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 9, 18, 15, 44, 930740, tzinfo=datetime.timezone.utc)
+2025-11-09 12:16:12,614 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:16:21,773 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-09 12:16:21,774 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:16:23,028 - SteelRebarPricePrediction - INFO - hot_rolled_coil: 879.0000 (último cierre 2025-11-07)
+2025-11-09 12:16:23,452 - SteelRebarPricePrediction - INFO - iron_ore: 103.3400 (último cierre 2025-11-07)
+2025-11-09 12:16:23,824 - SteelRebarPricePrediction - INFO - usd_mxn: 18.4525 (último cierre 2025-11-09)
+2025-11-09 12:16:24,196 - SteelRebarPricePrediction - INFO - coal: 22.9050 (último cierre 2025-11-07)
+2025-11-09 12:16:24,208 - SteelRebarPricePrediction - INFO - Recalculated prediction, saving on cache.
+2025-11-09 12:16:24,208 - SteelRebarPricePrediction - INFO - JSON: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.1 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 9, 18, 16, 24, 208034, tzinfo=datetime.timezone.utc)
+2025-11-09 12:23:16,323 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:23:47,115 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-09 12:23:47,115 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:23:48,348 - SteelRebarPricePrediction - INFO - hot_rolled_coil: 879.0000 (último cierre 2025-11-07)
+2025-11-09 12:23:48,758 - SteelRebarPricePrediction - INFO - iron_ore: 103.3400 (último cierre 2025-11-07)
+2025-11-09 12:23:49,179 - SteelRebarPricePrediction - INFO - usd_mxn: 18.4525 (último cierre 2025-11-09)
+2025-11-09 12:23:49,530 - SteelRebarPricePrediction - INFO - coal: 22.9050 (último cierre 2025-11-07)
+2025-11-09 12:23:49,543 - SteelRebarPricePrediction - INFO - Recalculated prediction, saving on cache.
+2025-11-09 12:23:49,543 - SteelRebarPricePrediction - INFO - JSON: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.1 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 9, 18, 23, 49, 543240, tzinfo=datetime.timezone.utc)
+2025-11-09 12:23:53,580 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-09 12:23:53,581 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:54,050 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 2
+2025-11-09 12:23:54,050 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:54,262 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 3
+2025-11-09 12:23:54,262 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:54,429 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 4
+2025-11-09 12:23:54,430 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:54,621 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 5
+2025-11-09 12:23:54,621 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:55,152 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 6
+2025-11-09 12:23:55,152 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:55,378 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 7
+2025-11-09 12:23:55,379 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:55,611 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 8
+2025-11-09 12:23:55,611 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:55,828 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 9
+2025-11-09 12:23:55,828 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:56,061 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 10
+2025-11-09 12:23:56,066 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.1 minutes)
+2025-11-09 12:23:56,248 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 11
+2025-11-09 12:23:56,249 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:56,470 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 12
+2025-11-09 12:23:56,470 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:56,713 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 13
+2025-11-09 12:23:56,713 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:56,952 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 14
+2025-11-09 12:23:56,952 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:57,212 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 15
+2025-11-09 12:23:57,212 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:57,446 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 16
+2025-11-09 12:23:57,447 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:57,717 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 17
+2025-11-09 12:23:57,717 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:57,997 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 18
+2025-11-09 12:23:57,998 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:58,439 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 19
+2025-11-09 12:23:58,440 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:58,703 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 20
+2025-11-09 12:23:58,703 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:58,921 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 21
+2025-11-09 12:23:58,921 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:59,134 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 22
+2025-11-09 12:23:59,134 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:59,342 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 23
+2025-11-09 12:23:59,342 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:59,536 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 24
+2025-11-09 12:23:59,536 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:59,754 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 25
+2025-11-09 12:23:59,754 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:23:59,937 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 26
+2025-11-09 12:23:59,938 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:00,148 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 27
+2025-11-09 12:24:00,148 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:00,370 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 28
+2025-11-09 12:24:00,370 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:00,570 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 29
+2025-11-09 12:24:00,570 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:00,792 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 30
+2025-11-09 12:24:00,793 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:00,998 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 31
+2025-11-09 12:24:00,998 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:01,196 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 32
+2025-11-09 12:24:01,196 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:01,410 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 33
+2025-11-09 12:24:01,410 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:01,640 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 34
+2025-11-09 12:24:01,640 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:01,854 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 35
+2025-11-09 12:24:01,854 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:02,068 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 36
+2025-11-09 12:24:02,068 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.2 minutes)
+2025-11-09 12:24:02,275 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 37
+2025-11-09 12:24:02,279 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:02,493 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 38
+2025-11-09 12:24:02,493 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:02,707 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 39
+2025-11-09 12:24:02,707 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:02,927 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 40
+2025-11-09 12:24:02,928 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:03,138 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 41
+2025-11-09 12:24:03,138 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:03,353 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 42
+2025-11-09 12:24:03,354 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:03,568 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 43
+2025-11-09 12:24:03,568 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:03,777 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 44
+2025-11-09 12:24:03,778 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:03,985 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 45
+2025-11-09 12:24:03,986 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:04,196 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 46
+2025-11-09 12:24:04,196 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:04,392 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 47
+2025-11-09 12:24:04,392 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:04,603 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 48
+2025-11-09 12:24:04,603 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:04,815 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 49
+2025-11-09 12:24:04,816 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:05,024 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 50
+2025-11-09 12:24:05,025 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:05,255 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 51
+2025-11-09 12:24:05,255 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:05,482 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 52
+2025-11-09 12:24:05,483 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:05,683 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 53
+2025-11-09 12:24:05,684 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:05,884 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 54
+2025-11-09 12:24:05,884 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:06,105 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 55
+2025-11-09 12:24:06,106 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:06,311 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 56
+2025-11-09 12:24:06,311 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:06,537 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 57
+2025-11-09 12:24:06,538 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:06,753 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 58
+2025-11-09 12:24:06,753 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:06,969 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 59
+2025-11-09 12:24:06,970 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:07,198 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 60
+2025-11-09 12:24:07,198 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:07,405 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 61
+2025-11-09 12:24:07,407 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:07,621 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 62
+2025-11-09 12:24:07,622 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:07,851 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 63
+2025-11-09 12:24:07,851 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:08,067 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 64
+2025-11-09 12:24:08,067 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.3 minutes)
+2025-11-09 12:24:08,282 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 65
+2025-11-09 12:24:08,282 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:08,503 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 66
+2025-11-09 12:24:08,504 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:08,723 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 67
+2025-11-09 12:24:08,724 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:08,949 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 68
+2025-11-09 12:24:08,949 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:09,183 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 69
+2025-11-09 12:24:09,183 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:09,416 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 70
+2025-11-09 12:24:09,417 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:09,666 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 71
+2025-11-09 12:24:09,667 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:09,918 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 72
+2025-11-09 12:24:09,919 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:10,160 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 73
+2025-11-09 12:24:10,160 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:10,390 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 74
+2025-11-09 12:24:10,390 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:10,626 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 75
+2025-11-09 12:24:10,626 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:10,869 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 76
+2025-11-09 12:24:10,869 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:11,128 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 77
+2025-11-09 12:24:11,129 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:11,401 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 78
+2025-11-09 12:24:11,402 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:11,641 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 79
+2025-11-09 12:24:11,641 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:11,890 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 80
+2025-11-09 12:24:11,891 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:12,123 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 81
+2025-11-09 12:24:12,124 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:12,371 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 82
+2025-11-09 12:24:12,373 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:12,607 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 83
+2025-11-09 12:24:12,608 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:12,864 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 84
+2025-11-09 12:24:12,865 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:13,089 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 85
+2025-11-09 12:24:13,090 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:13,329 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 86
+2025-11-09 12:24:13,332 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:13,544 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 87
+2025-11-09 12:24:13,545 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:13,761 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 88
+2025-11-09 12:24:13,761 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:13,987 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 89
+2025-11-09 12:24:13,987 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.4 minutes)
+2025-11-09 12:24:14,210 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 90
+2025-11-09 12:24:14,210 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:14,435 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 91
+2025-11-09 12:24:14,436 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:14,667 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 92
+2025-11-09 12:24:14,667 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:14,906 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 93
+2025-11-09 12:24:14,907 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:15,132 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 94
+2025-11-09 12:24:15,132 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:15,328 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 95
+2025-11-09 12:24:15,328 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:15,564 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 96
+2025-11-09 12:24:15,565 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:15,819 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 97
+2025-11-09 12:24:15,819 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:16,049 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 98
+2025-11-09 12:24:16,050 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:24:16,254 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 99
+2025-11-09 12:24:16,254 - SteelRebarPricePrediction - INFO -  Using prediccionn saved on cache (last updated  0.5 minutes)
+2025-11-09 12:25:26,064 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:26:07,451 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-09 12:27:19,407 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-09 12:27:19,408 - SteelRebarPricePrediction - INFO - Cache expired, recaclculate prediction...
+2025-11-09 12:27:20,627 - SteelRebarPricePrediction - INFO - hot_rolled_coil: 879.0000 (último cierre 2025-11-07)
+2025-11-09 12:27:21,025 - SteelRebarPricePrediction - INFO - iron_ore: 103.3400 (último cierre 2025-11-07)
+2025-11-09 12:27:21,444 - SteelRebarPricePrediction - INFO - usd_mxn: 18.4525 (último cierre 2025-11-09)
+2025-11-09 12:27:21,860 - SteelRebarPricePrediction - INFO - coal: 22.9050 (último cierre 2025-11-07)
+2025-11-09 12:27:21,885 - SteelRebarPricePrediction - INFO - Recalculated prediction, saving on cache.
+2025-11-09 12:27:21,885 - SteelRebarPricePrediction - INFO - JSON: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.1 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 9, 18, 27, 21, 885235, tzinfo=datetime.timezone.utc)

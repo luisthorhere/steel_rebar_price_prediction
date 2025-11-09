@@ -5,15 +5,13 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import LinearRegression
 from pandas.tseries.offsets import BDay
+from pathlib import Path
 from joblib import load
 import pandas as pd
-import os
 import joblib
-from pathlib import Path
 import time
-from functools import lru_cache
+
 from ..api.schema import SteelRebarPriceResponse
 from .utils import last_close_and_date
 from ..logger.logger import logger
@@ -44,7 +42,7 @@ def get_historical_data():
 
 
 def train_model_data():
-    # Carga dataset
+
     if not DATA_PATH.exists():
         raise FileNotFoundError(f"No encuentro el dataset: {DATA_PATH}")
 
@@ -52,7 +50,6 @@ def train_model_data():
     features = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
     target = "steel_rebar_next"
 
-    # Validaciones rápidas
     faltantes = [c for c in features + [target] if c not in df.columns]
     if faltantes:
         raise KeyError(f"Faltan columnas en el dataset: {faltantes}")
@@ -71,11 +68,17 @@ def train_random_forest(X_train, X_test, y_train, y_test):
     rf.fit(X_train, y_train)
     y_pred_rf = rf.predict(X_test)
 
-    mape = mean_absolute_percentage_error(y_test, y_pred_rf) * 100
-    logger.info("MAPE RF: %.4f", mape)
 
-    # Guarda modelo
-    joblib.dump(rf, MODEL_PATH)
+    mae = mean_absolute_error(y_test, y_pred_rf)
+    mape = mean_absolute_percentage_error(y_test, y_pred_rf) * 100
+    r2 = r2_score(y_test, y_pred_rf)
+
+    logger.info("MAE RF: %.4f", mae)
+    logger.info("MAPE RF: %.2f%%", mape)
+    logger.info("R2 RF: %.4f", r2)
+
+
+    joblib.dump({"model": rf, "r2": r2, "mape": mape}, MODEL_PATH)
     logger.info("RandomForest model saved at: %s", str(MODEL_PATH))
 
 
@@ -101,7 +104,9 @@ def predict_random_forest():
 
     if not MODEL_PATH.exists():
         raise FileNotFoundError(f"The model is not finded on the path {MODEL_PATH}.")
-    model = load(MODEL_PATH)
+    model_data = load(MODEL_PATH)
+    model = model_data["model"]
+    mape = model_data.get("mape", None)
 
     values = {}
     dates = []
@@ -135,10 +140,12 @@ def predict_random_forest():
 
     pred_next = float(model.predict(X_latest)[0])
 
+    mape_confidence = round(1 - (mape / 100), 2)
+
     response = SteelRebarPriceResponse(
         prediction_date=str(prediction_date),
         predicted_price_usd_per_ton=round(pred_next, 2),
-        model_confidence="0.95",
+        model_confidence=mape_confidence,
     )
 
     _cached_prediction = response
