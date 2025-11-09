@@ -1,5 +1,5 @@
 # Imagen base ligera de Python
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 # Evitar que Python genere archivos .pyc y usar buffering de logs
 ENV PYTHONDONTWRITEBYTECODE=1
