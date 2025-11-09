@@ -12,7 +12,9 @@ import pandas as pd
 import os
 import joblib
 from pathlib import Path
-
+import time
+from functools import lru_cache
+from ..api.schema import SteelRebarPriceResponse
 from .utils import last_close_and_date
 from ..logger.logger import logger
 from ..data.get_data import (
@@ -20,6 +22,15 @@ from ..data.get_data import (
     steel_rebar_data,
     merge_feautures,
 )
+
+
+# Duración del caché en segundos (1 hora = 3600)
+CACHE_TTL = 3600  
+
+# Variables globales para caché manual
+_cached_prediction = None
+_cache_timestamp = 0
+
 
 # --- RUTAS BASE COMO Path ---
 BASE_DIR = Path(__file__).resolve().parent  # carpeta actual del módulo
@@ -71,21 +82,29 @@ def train_random_forest(X_train, X_test, y_train, y_test):
 
 
 def predict_random_forest():
-    # --- Tickers y columnas de features ---
+    global _cached_prediction, _cache_timestamp
+
+    current_time = time.time()
+    if _cached_prediction is not None and (current_time - _cache_timestamp) < CACHE_TTL:
+        logger.info(" Using prediccionn saved on cache (last updated  %.1f minutes)",
+                    (current_time - _cache_timestamp) / 60)
+        return _cached_prediction
+
+
+    logger.info("Cache expired, recaclculate prediction...")
+
     symbols = {
         "HRC=F": "hot_rolled_coil",
         "TIO=F": "iron_ore",
         "MXN=X": "usd_mxn",
-        "COAL": "coal",  # valida que exista; si no, ajusta
+        "COAL": "coal",
     }
     feature_cols = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
 
-    # 1) Modelo
     if not MODEL_PATH.exists():
-        raise FileNotFoundError(f"No encuentro el modelo en {MODEL_PATH}.")
+        raise FileNotFoundError(f"The model is not finded on the path {MODEL_PATH}.")
     model = load(MODEL_PATH)
 
-    # 2) Traer último cierre y fecha de cada feature
     values = {}
     dates = []
 
@@ -93,9 +112,9 @@ def predict_random_forest():
         try:
             v, d = last_close_and_date(ticker, lookback_days=10)
             if v is None or pd.isna(v):
-                raise ValueError(f"Valor nulo/NaN para {ticker}")
+                raise ValueError(f"Null value for the {ticker}")
             if d is None:
-                raise ValueError(f"Fecha nula para {ticker}")
+                raise ValueError(f"Date null for the {ticker}")
 
             v = float(v)
             d = pd.to_datetime(d)
@@ -105,37 +124,30 @@ def predict_random_forest():
 
             logger.info("%s: %.4f (último cierre %s)", name, v, d.date())
         except Exception as e:
-            raise RuntimeError(f"Fallo al traer {ticker} ({name}): {e}") from e
+            raise RuntimeError(f"Failure at getting the {ticker} ({name}): {e}") from e
 
-    # 3) Ensamble del vector de entrada en orden correcto
     faltantes_en_values = [c for c in feature_cols if c not in values]
     if faltantes_en_values:
-        raise KeyError(f"Faltan columnas de features: {faltantes_en_values}")
+        raise KeyError(f"There are missing feautures: {faltantes_en_values}")
 
     X_latest = pd.DataFrame([[values[c] for c in feature_cols]], columns=feature_cols)
 
-    # 4) Fecha de predicción = siguiente día hábil al más reciente de los features
     last_feat_date = max(dates)
     prediction_date = (last_feat_date + BDay(1)).date()
 
-    # 5) Predicción
     pred_next = float(model.predict(X_latest)[0])
 
-    # 6) Log y retorno
-    logger.info("Resumen de predicción")
-    logger.info("---------------------")
-    logger.info("Último día hábil con features: %s", last_feat_date.date())
-    logger.info("Día de predicción (siguiente hábil): %s", prediction_date)
-    logger.info("Predicción steel rebar (USD/ton): %.2f", pred_next)
+    response = SteelRebarPriceResponse(
+        prediction_date=str(prediction_date),
+        predicted_price_usd_per_ton=round(pred_next, 2),
+        model_confidence="0.95",
+    )
 
-    result = {
-        "prediction_date": str(prediction_date),
-        "predicted_price_usd_per_ton": round(pred_next, 2),
-        "currency": "USD",
-        "unit": "metric ton",
-        "model_confidence": "",
-        "timestamp": "",
-    }
-    logger.info("JSON: %s", result)
+    _cached_prediction = response
+    _cache_timestamp = current_time
 
-    return result
+    logger.info("Recalculated prediction, saving on cache.")
+    logger.info("JSON: %s", response)
+
+    return response
+

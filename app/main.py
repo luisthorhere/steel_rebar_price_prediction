@@ -4,8 +4,8 @@ from app.api.router import router as steel_rebar_price
 
 
 app = FastAPI(
-    title="Residency Car Access API",
-    description="API to manage vehicle access for residents, guests, and service providers.",
+    title="Steel Rebar Price Predictor",
+    description="API to predice the steel rebar price.",
     version="1.0.0"
 )
 
@@ -19,9 +19,8 @@ def root():
         "version": "1.0",
         "documentation_url": "http://127.0.0.1:8009/docs",
         "data_sources": [
-            "London Metal Exchange (LME)",
-            "Trading Economics",
-            "FRED (Federal Reserve Economic Data)"
+            "https://www.investing.com/commodities/steel-rebar-historical-data",
+            "Yahoo Finance",
         ],
         "last_model_update": datetime(2025, 10, 15, tzinfo=timezone.utc).isoformat()
     }
