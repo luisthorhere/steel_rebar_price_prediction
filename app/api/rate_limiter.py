@@ -5,6 +5,7 @@ from ..logger.logger import logger
 
 request_counters = {}
 
+
 def check_rate_limit(api_key: str):
     now = datetime.now(timezone.utc)
     window_start = now.replace(minute=0, second=0, microsecond=0)
@@ -23,5 +24,7 @@ def check_rate_limit(api_key: str):
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             detail="Rate limit exceeded (100 requests/hour). Try again later.",
         )
-    logger.info(f"API_KEY: {api_key} Request made during the last hour: {data['count']}")
+    logger.info(
+        f"API_KEY: {api_key} Request made during the last hour: {data['count']}"
+    )
     data["count"] += 1
