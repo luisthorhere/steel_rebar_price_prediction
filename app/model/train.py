@@ -1,4 +1,8 @@
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, r2_score
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_absolute_percentage_error,
+    r2_score,
+)
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
@@ -18,10 +22,11 @@ from ..data.get_data import (
 )
 
 # --- RUTAS BASE COMO Path ---
-BASE_DIR = Path(__file__).resolve().parent        # carpeta actual del módulo
-APP_DIR = BASE_DIR.parent                         # asumiendo estructura app/<este_módulo>
+BASE_DIR = Path(__file__).resolve().parent  # carpeta actual del módulo
+APP_DIR = BASE_DIR.parent  # asumiendo estructura app/<este_módulo>
 MODEL_PATH = BASE_DIR / "steel_rebar_model_v2.pkl"
 DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
+
 
 def get_historical_data():
     steel_df = steel_rebar_data()
@@ -53,11 +58,7 @@ def train_model_data():
 
 
 def train_random_forest(X_train, X_test, y_train, y_test):
-    rf = RandomForestRegressor(
-        n_estimators=200,
-        max_depth=8,
-        random_state=42
-    )
+    rf = RandomForestRegressor(n_estimators=200, max_depth=8, random_state=42)
     rf.fit(X_train, y_train)
     y_pred_rf = rf.predict(X_test)
 
@@ -75,7 +76,7 @@ def predict_random_forest():
         "HRC=F": "hot_rolled_coil",
         "TIO=F": "iron_ore",
         "MXN=X": "usd_mxn",
-        "COAL": "coal"  # valida que exista; si no, ajusta
+        "COAL": "coal",  # valida que exista; si no, ajusta
     }
     feature_cols = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
 
@@ -133,7 +134,7 @@ def predict_random_forest():
         "currency": "USD",
         "unit": "metric ton",
         "model_confidence": "",
-        "timestamp": ""
+        "timestamp": "",
     }
     logger.info("JSON: %s", result)
 
