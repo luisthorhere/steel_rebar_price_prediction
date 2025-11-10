@@ -38,23 +38,29 @@ cd deacero-steel-rebar-api
 
 ### 🧰 2️⃣ Crear y Activar un Entorno Virtual
 En Windows:
-
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
+
+---
 
 ### 📦 3️⃣ Instalar Dependencias
 ```bash
 pip install -r requirements.txt
 ```
 
-🚀 4️⃣ Ejecutar la API Localmente
+---
+
+### 🚀 4️⃣ Ejecutar la API Localmente
 ```bash
 uvicorn app.api.main:app --reload
 ```
 
-☁️ 5️⃣ Despliegue en Google Cloud Run
+---
+
+
+### ☁️ 5️⃣ Despliegue en Google Cloud Run
 ```bash
 .\deploy_cloudrun.ps1
 ```
