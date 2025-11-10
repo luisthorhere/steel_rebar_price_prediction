@@ -3,3 +3,4 @@ api_key:
   - "D3Ac3ro"
   - "D34c3ro"
 rate_limit: 100
+cache_ttl: 3600

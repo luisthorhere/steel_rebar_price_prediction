@@ -29,5 +29,6 @@ cfg_yaml = YamlConfiguration()
 class Settings(BaseSettings):
     api_key: list = Field(validation_alias=AliasPath("api_key"))
     rate_limit: int = Field(validation_alias=AliasPath("rate_limit"))
+    cache_ttl: int = Field(validation_alias=AliasPath("cache_ttl"))
 
 SETTINGS =  Settings(**cfg_yaml.config)

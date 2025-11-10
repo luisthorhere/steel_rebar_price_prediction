@@ -11,7 +11,7 @@ from joblib import load
 import pandas as pd
 import joblib
 import time
-
+from ..config.config import SETTINGS
 from ..api.schema import SteelRebarPriceResponse
 from .utils import last_close_and_date
 from ..logger.logger import logger
@@ -22,15 +22,12 @@ from ..data.get_data import (
 )
 
 
-CACHE_TTL = 3600  
-
 _cached_prediction = None
 _cache_timestamp = 0
 
-
 # --- RUTAS BASE COMO Path ---
-BASE_DIR = Path(__file__).resolve().parent  # carpeta actual del módulo
-APP_DIR = BASE_DIR.parent  # asumiendo estructura app/<este_módulo>
+BASE_DIR = Path(__file__).resolve().parent
+APP_DIR = BASE_DIR.parent
 MODEL_PATH = BASE_DIR / "steel_rebar_model_v2.pkl"
 DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 
@@ -86,7 +83,7 @@ def predict_random_forest():
     global _cached_prediction, _cache_timestamp
 
     current_time = time.time()
-    if _cached_prediction is not None and (current_time - _cache_timestamp) < CACHE_TTL:
+    if _cached_prediction is not None and (current_time - _cache_timestamp) < SETTINGS.cache_ttl:
         logger.info(" Using prediccionn saved on cache (last updated  %.1f minutes)",
                     (current_time - _cache_timestamp) / 60)
         return _cached_prediction
