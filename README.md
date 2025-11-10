@@ -20,7 +20,7 @@ El modelo combina datos de commodities y tipo de cambio obtenidos de fuentes pú
 
 Antes de comenzar asegúrate de tener instalado:
 
-- [Python 3.9+](https://www.python.org/downloads/)
+- [Python 3.12+](https://www.python.org/downloads/)
 - [Google Cloud SDK (gcloud)](https://cloud.google.com/sdk/docs/install)
 - [Docker](https://docs.docker.com/get-docker/)
 - PowerShell (para ejecutar el script `deploy_cloudrun.ps1` en Windows)
