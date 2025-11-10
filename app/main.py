@@ -17,7 +17,7 @@ def root():
     return {
         "service": "Steel Rebar Price Predictor",
         "version": "1.0",
-        "documentation_url": "http://127.0.0.1:8009/docs",
+        "documentation_url": "https://steel-rebar-api-759941914967.us-central1.run.app/docs",
         "data_sources": [
             "https://www.investing.com/commodities/steel-rebar-historical-data",
             "Yahoo Finance",
