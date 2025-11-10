@@ -1,3 +1,4 @@
+import concurrent.futures
 import yfinance as yf
 import pandas as pd
 import os
@@ -7,8 +8,14 @@ from ..logger.logger import logger
 base_path = os.path.dirname(__file__)
 
 
-def steel_rebar_data() -> pd.DataFrame:
+def prepare_steel_rebar_data() -> pd.DataFrame:
+    """
+        Load and clean daily steel rebar price data.
 
+        Reads the CSV file, converts dates, removes null values, sorts chronologically,
+        and keeps only the last record per day. Returns a DataFrame ready for
+        time series analysis or modeling.
+    """
     file_path = os.path.join(base_path, "steel_rebar_data.csv")
     steel_data = pd.read_csv(file_path, index_col="Date")
     steel_data.reset_index(inplace=True)
@@ -18,11 +25,35 @@ def steel_rebar_data() -> pd.DataFrame:
     steel_data = steel_data.groupby(
         steel_data["Date"].dt.normalize(), as_index=False
     ).last()
-    logger.info("Steel rebar data loaded")
+
+    logger.info("Steel rebar data loaded for analysis")
+
     return steel_data
 
 
-def correlational_feautures_historical() -> pd.DataFrame:
+def _download_and_clean(ticker: str, name: str) -> pd.DataFrame:
+    """Helper: download and clean one ticker's data."""
+    try:
+        df = yf.download(ticker, period="5y", interval="1d")[["Close"]]
+        df.reset_index(inplace=True)
+        df.columns = ["Date", name]
+        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+        df = df.dropna(subset=["Date"]).sort_values("Date")
+        df = df.groupby(df["Date"].dt.normalize(), as_index=False).last()
+        logger.info(f"Downloaded {name}")
+        return name, df
+    except Exception as e:
+        logger.warning(f"Error downloading {ticker}: {e}")
+        return name, pd.DataFrame(columns=["Date", name])
+
+
+def correlational_feautures_historical_parallel() -> dict[str, pd.DataFrame]:
+    """
+    Download 5-year daily data of commodities correlated with steel rebar prices in parallel.
+
+    Uses threads to fetch hot rolled coil, iron ore, USD/MXN, and coal data faster.
+    Returns a dictionary of cleaned DataFrames.
+    """
     symbols = {
         "HRC=F": "hot_rolled_coil",
         "TIO=F": "iron_ore",
@@ -31,25 +62,23 @@ def correlational_feautures_historical() -> pd.DataFrame:
     }
 
     data = {}
-
-    for ticker, name in symbols.items():
-        try:
-            df = yf.download(ticker, period="5y", interval="1d")[["Close"]]
-            df.reset_index(inplace=True)
-            df.columns = ["Date", name]
-            df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
-            df = df.dropna(subset=["Date"]).sort_values("Date")
-            df = df.groupby(df["Date"].dt.normalize(), as_index=False).last()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        futures = [executor.submit(_download_and_clean, t, n) for t, n in symbols.items()]
+        for future in concurrent.futures.as_completed(futures):
+            name, df = future.result()
             data[name] = df
 
-            logger.info(f"Downloading {name} data")
-        except Exception as e:
-            logger.warning((f"Downloading error {ticker}: {e}"))
-
     return data
+  
 
+def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]):
+    """
+    Merges the main steel rebar dataset with multiple feature DataFrames by date.
 
-def merge_feautures(steel_data: pd.DataFrame, feautures: pd.DataFrame) -> pd.DataFrame:
+    Aligns all data on the "Date" index, checks feature names, merges using left joins,
+    fills missing values (forward/backward), and saves intermediate CSVs.
+    Also creates the target column `steel_rebar_next` for model training.
+    """
     steel_idx = steel_data.set_index("Date").sort_index()
     merged = steel_idx.copy()
 
@@ -62,7 +91,7 @@ def merge_feautures(steel_data: pd.DataFrame, feautures: pd.DataFrame) -> pd.Dat
                 f"The expected column '{name}' for feauture {name}, getting: {list(df_idx.columns)}"
             )
         merged = merged.join(df_idx, how="left")
-
+    logger.info("Correctly merging all the data")
     merged_ffill = merged.ffill().bfill()
     raw_data = os.path.join(base_path, "merged_steel_dataset_raw.csv")
     filled_data = os.path.join(base_path, "merged_steel_dataset_filled.csv")

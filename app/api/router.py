@@ -1,13 +1,12 @@
 from fastapi import APIRouter, Depends
 
+from ..model.predict import predict_random_forest
 from .dependencies import verify_api_key
 from ..model.train import (
     get_historical_data,
     train_random_forest,
     train_model_data,
-    predict_random_forest,
 )
-
 
 
 router = APIRouter(prefix="/predict", tags=["Steel"])
