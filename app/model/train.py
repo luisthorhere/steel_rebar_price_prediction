@@ -1,16 +1,17 @@
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from pandas.tseries.offsets import BDay
 from sklearn.metrics import (
     mean_absolute_error,
     mean_absolute_percentage_error,
     r2_score,
 )
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from pandas.tseries.offsets import BDay
 from pathlib import Path
 from joblib import load
 import pandas as pd
 import joblib
 import time
+
 from ..config.config import SETTINGS
 from ..api.schema import SteelRebarPriceResponse
 from .utils import last_close_and_date
