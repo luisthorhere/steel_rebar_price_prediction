@@ -34,15 +34,15 @@ def get_historical_data():
 def train_model_data():
 
     if not DATA_PATH.exists():
-        raise FileNotFoundError(f"No encuentro el dataset: {DATA_PATH}")
+        raise FileNotFoundError(f"Missing path to load the dataset: {DATA_PATH}")
 
     df = pd.read_csv(DATA_PATH)
     features = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
     target = "steel_rebar_next"
 
-    faltantes = [c for c in features + [target] if c not in df.columns]
-    if faltantes:
-        raise KeyError(f"Faltan columnas en el dataset: {faltantes}")
+    missing_cols = [c for c in features + [target] if c not in df.columns]
+    if missing_cols:
+        raise KeyError(f"Missing columns in the dataset: {missing_cols}")
 
     X = df[features]
     y = df[target]
