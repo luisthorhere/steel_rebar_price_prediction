@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Request
 from datetime import datetime, timezone
 from app.api.router import router as steel_rebar_price
 
@@ -13,11 +13,12 @@ app = FastAPI(
 app.include_router(steel_rebar_price)
 
 @app.get("/")
-def root():
+def root(request: Request):
+    base = str(request.base_url).rstrip("/")
     return {
         "service": "Steel Rebar Price Predictor",
         "version": "1.0",
-        "documentation_url": "https://steel-rebar-api-759941914967.us-central1.run.app/docs",
+        "documentation_url": f"{base}/docs",
         "data_sources": [
             "https://www.investing.com/commodities/steel-rebar-historical-data",
             "Yahoo Finance",
