@@ -807,3 +807,4 @@
 2025-11-10 16:58:17,777 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
 2025-11-10 16:58:18,700 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
 2025-11-10 16:58:18,701 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 58, 18, 700587, tzinfo=datetime.timezone.utc)
+2025-11-11 05:54:22,332 - SteelRebarPricePrediction - INFO - Configuration file loaded

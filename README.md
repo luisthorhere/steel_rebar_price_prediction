@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ### 🚀 4️⃣ Ejecutar la API Localmente
 ```bash
-uvicorn app.api.main:app --reload
+uvicorn app.main:app --reload
 ```
 
 ---
