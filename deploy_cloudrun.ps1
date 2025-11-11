@@ -47,5 +47,5 @@ $url = gcloud run services describe $serviceName --region $region --format "valu
 if ($url) {
     Write-Host "✅ Service successfully deployed at: $url" -ForegroundColor Green
 } else {
-    Write-Host "⚠️ Could not retrieve service URL. Check Cloud Run console." -ForegroundColor Yellow
+    Write-Host "Could not retrieve service URL. Check Cloud Run console." -ForegroundColor Yellow
 }
