@@ -716,3 +716,94 @@
 2025-11-10 16:28:16,404 - SteelRebarPricePrediction - INFO - MAPE RF: 4.54%
 2025-11-10 16:28:16,405 - SteelRebarPricePrediction - INFO - R2 RF: -3.3269
 2025-11-10 16:32:14,489 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:42:39,304 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:43:05,755 - SteelRebarPricePrediction - INFO - Steel rebar data loaded for analysis
+2025-11-10 16:43:07,709 - SteelRebarPricePrediction - INFO - Downloaded usd_mxn
+2025-11-10 16:43:07,719 - SteelRebarPricePrediction - INFO - Downloaded hot_rolled_coil
+2025-11-10 16:43:07,723 - SteelRebarPricePrediction - INFO - Downloaded iron_ore
+2025-11-10 16:43:07,766 - SteelRebarPricePrediction - INFO - Downloaded coal
+2025-11-10 16:43:07,844 - SteelRebarPricePrediction - INFO - Correctly merging all the data
+2025-11-10 16:43:07,962 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-10 16:43:09,433 - SteelRebarPricePrediction - INFO - MAE RF: 45.2624
+2025-11-10 16:43:09,434 - SteelRebarPricePrediction - INFO - MAPE RF: 8.20%
+2025-11-10 16:43:09,435 - SteelRebarPricePrediction - INFO - R2 RF: -12.7718
+2025-11-10 16:43:14,517 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:43:31,994 - SteelRebarPricePrediction - INFO - Steel rebar data loaded for analysis
+2025-11-10 16:43:32,609 - SteelRebarPricePrediction - INFO - Downloaded iron_ore
+2025-11-10 16:43:32,640 - SteelRebarPricePrediction - INFO - Downloaded usd_mxn
+2025-11-10 16:43:32,640 - SteelRebarPricePrediction - INFO - Downloaded coal
+2025-11-10 16:43:32,652 - SteelRebarPricePrediction - INFO - Downloaded hot_rolled_coil
+2025-11-10 16:43:32,662 - SteelRebarPricePrediction - INFO - Correctly merging all the data
+2025-11-10 16:43:32,700 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-10 16:43:33,019 - SteelRebarPricePrediction - INFO - MAE RF: 24.8182
+2025-11-10 16:43:33,019 - SteelRebarPricePrediction - INFO - MAPE RF: 4.54%
+2025-11-10 16:43:33,020 - SteelRebarPricePrediction - INFO - R2 RF: -3.3269
+2025-11-10 16:43:33,088 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:44:00,562 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:44:00,563 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:44:02,498 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-10 16:44:02,499 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=616.34 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 44, 2, 498247, tzinfo=datetime.timezone.utc)
+2025-11-10 16:44:28,956 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:44:46,360 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:44:46,360 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:44:49,376 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-10 16:44:49,377 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=616.34 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 44, 49, 375994, tzinfo=datetime.timezone.utc)
+2025-11-10 16:45:00,154 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-10 16:45:00,155 - SteelRebarPricePrediction - INFO - Using cached prediction (updated 0.2 minutes ago)
+2025-11-10 16:45:18,428 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:45:43,073 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:45:43,073 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:45:46,403 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-10 16:45:46,405 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=616.34 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 45, 46, 403347, tzinfo=datetime.timezone.utc)
+2025-11-10 16:46:08,811 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:46:28,944 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:46:28,945 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:46:32,673 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-10 16:46:32,674 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=616.34 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 46, 32, 673012, tzinfo=datetime.timezone.utc)
+2025-11-10 16:46:33,188 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-10 16:46:33,189 - SteelRebarPricePrediction - INFO - Using cached prediction (updated 0.1 minutes ago)
+2025-11-10 16:53:40,996 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:54:07,147 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:54:27,088 - SteelRebarPricePrediction - INFO - Steel rebar data loaded for analysis
+2025-11-10 16:54:29,007 - SteelRebarPricePrediction - INFO - Downloaded coal
+2025-11-10 16:54:29,041 - SteelRebarPricePrediction - INFO - Downloaded iron_ore
+2025-11-10 16:54:29,101 - SteelRebarPricePrediction - WARNING - Error downloading HRC=F: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:54:29,117 - SteelRebarPricePrediction - WARNING - Error downloading MXN=X: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:54:29,175 - SteelRebarPricePrediction - INFO - Correctly merging all the data
+2025-11-10 16:54:29,307 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-10 16:54:30,299 - SteelRebarPricePrediction - INFO - MAE RF: 24.8182
+2025-11-10 16:54:30,300 - SteelRebarPricePrediction - INFO - MAPE RF: 4.54%
+2025-11-10 16:54:30,302 - SteelRebarPricePrediction - INFO - R2 RF: -3.3269
+2025-11-10 16:54:30,550 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:54:45,510 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:54:45,511 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:55:31,600 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:55:54,805 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:56:20,124 - SteelRebarPricePrediction - INFO - Steel rebar data loaded for analysis
+2025-11-10 16:56:21,829 - SteelRebarPricePrediction - INFO - Downloaded iron_ore
+2025-11-10 16:56:21,846 - SteelRebarPricePrediction - INFO - Downloaded hot_rolled_coil
+2025-11-10 16:56:21,846 - SteelRebarPricePrediction - INFO - Downloaded coal
+2025-11-10 16:56:21,860 - SteelRebarPricePrediction - WARNING - Error downloading MXN=X: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:56:21,874 - SteelRebarPricePrediction - INFO - Correctly merging all the data
+2025-11-10 16:56:21,927 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-10 16:56:22,341 - SteelRebarPricePrediction - INFO - MAE RF: 24.8182
+2025-11-10 16:56:22,342 - SteelRebarPricePrediction - INFO - MAPE RF: 4.54%
+2025-11-10 16:56:22,342 - SteelRebarPricePrediction - INFO - R2 RF: -3.3269
+2025-11-10 16:56:22,433 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:56:41,714 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:57:40,000 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-10 16:58:04,607 - SteelRebarPricePrediction - INFO - Steel rebar data loaded for analysis
+2025-11-10 16:58:06,447 - SteelRebarPricePrediction - INFO - Downloaded usd_mxn
+2025-11-10 16:58:06,494 - SteelRebarPricePrediction - WARNING - Error downloading HRC=F: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:58:06,494 - SteelRebarPricePrediction - WARNING - Error downloading COAL: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:58:06,496 - SteelRebarPricePrediction - WARNING - Error downloading TIO=F: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2025-11-10 16:58:06,509 - SteelRebarPricePrediction - INFO - Correctly merging all the data
+2025-11-10 16:58:06,555 - SteelRebarPricePrediction - INFO - Training data correctly saved
+2025-11-10 16:58:06,845 - SteelRebarPricePrediction - INFO - MAE RF: 24.8182
+2025-11-10 16:58:06,846 - SteelRebarPricePrediction - INFO - MAPE RF: 4.54%
+2025-11-10 16:58:06,846 - SteelRebarPricePrediction - INFO - R2 RF: -3.3269
+2025-11-10 16:58:06,919 - SteelRebarPricePrediction - INFO - RandomForest model saved at: C:\Users\miria\OneDrive\Documents\DeAcero\app\model\steel_rebar_model_v2.pkl
+2025-11-10 16:58:17,776 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-10 16:58:17,777 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-10 16:58:18,700 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-10 16:58:18,701 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 58, 18, 700587, tzinfo=datetime.timezone.utc)
