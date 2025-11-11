@@ -18,7 +18,7 @@ async def steel_rebar_price():
     return steel_price
 
 
-@router.get("/random-forest-train/")
+@router.get("/random-forest-train/", include_in_schema=False)
 def random_forest():
     get_historical_data()
     X_train, X_test, y_train, y_test = train_model_data()
