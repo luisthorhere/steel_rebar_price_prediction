@@ -1,10 +1,8 @@
-from concurrent.futures import ThreadPoolExecutor 
 from pandas.tseries.offsets import BDay
 from datetime import date
 from pathlib import Path
 import yfinance as yf
 import pandas as pd
-import asyncio
 import joblib
 import os
 
@@ -62,28 +60,21 @@ def make_prediction(
     )
 
 
-async def get_latest_features(symbols: dict[str, str], lookback_days: int = 10) -> tuple[pd.DataFrame, date]:
+def get_latest_features(symbols: dict[str, str], lookback_days: int = 10) -> tuple[pd.DataFrame, date]:
     """
-    Fetch and validate the latest feature values from Yahoo Finance concurrently.
-    Downloads all tickers in parallel using a thread pool for faster execution.
+    Fetch and validate the latest feature values from Yahoo Finance sequentially (synchronous version).
+    Downloads each ticker one by one.
     """
-    loop = asyncio.get_event_loop()
     values, dates = {}, []
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        tasks = {
-            name: loop.run_in_executor(executor, last_close_and_date, ticker, lookback_days)
-            for ticker, name in symbols.items()
-        }
-
-        for name, task in tasks.items():
-            v, d = await task
-            if v is None or pd.isna(v):
-                raise ValueError(f"Null value for {name}")
-            if d is None:
-                raise ValueError(f"Null date for {name}")
-            values[name] = float(v)
-            dates.append(pd.to_datetime(d))
+    for ticker, name in symbols.items():
+        v, d = last_close_and_date(ticker, lookback_days)
+        if v is None or pd.isna(v):
+            raise ValueError(f"Null value for {name}")
+        if d is None:
+            raise ValueError(f"Null date for {name}")
+        values[name] = float(v)
+        dates.append(pd.to_datetime(d))
 
     X_latest = pd.DataFrame([[values[c] for c in values.keys()]], columns=list(values.keys()))
     return X_latest, max(dates)

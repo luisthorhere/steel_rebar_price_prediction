@@ -18,7 +18,7 @@ DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 _cached_prediction = None
 _cache_timestamp = 0
 
-async def predict_random_forest():
+def predict_random_forest():
     global _cached_prediction, _cache_timestamp
 
     current_time = time.time()
@@ -42,7 +42,7 @@ async def predict_random_forest():
     }
 
     model, mape = load_model(MODEL_PATH)
-    X_latest, last_feat_date = await get_latest_features(symbols)
+    X_latest, last_feat_date = get_latest_features(symbols)
     response = make_prediction(model, X_latest, mape, last_feat_date)
 
     _cached_prediction = response

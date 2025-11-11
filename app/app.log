@@ -808,3 +808,61 @@
 2025-11-10 16:58:18,700 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
 2025-11-10 16:58:18,701 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 10) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 10, 22, 58, 18, 700587, tzinfo=datetime.timezone.utc)
 2025-11-11 05:54:22,332 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:32:01,196 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:32:59,706 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:33:38,546 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:33:38,553 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:34:30,329 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:35:03,121 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:35:03,122 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:36:11,042 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-11 06:36:11,057 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:37:24,868 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-11 06:37:24,869 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 11, 12, 37, 24, 868197, tzinfo=datetime.timezone.utc)
+2025-11-11 06:37:38,127 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:37:56,756 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:37:56,756 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:38:29,321 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-11 06:38:29,323 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:42:07,196 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-11 06:42:07,196 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 11, 12, 42, 7, 195940, tzinfo=datetime.timezone.utc)
+2025-11-11 06:42:39,221 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:42:54,319 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:42:54,320 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:43:40,397 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-11 06:43:40,398 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 11, 12, 43, 40, 397645, tzinfo=datetime.timezone.utc)
+2025-11-11 06:44:03,992 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:44:17,580 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:44:17,580 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:45:07,911 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:45:24,256 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:45:24,256 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:45:48,414 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-11 06:45:48,420 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:47:49,885 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:50:59,164 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:50:59,165 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:51:08,306 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-11 06:51:08,306 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 11) predicted_price_usd_per_ton=580.72 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 11, 12, 51, 8, 306283, tzinfo=datetime.timezone.utc)
+2025-11-11 06:57:02,262 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 06:57:26,928 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 06:57:26,929 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:58:38,518 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 1
+2025-11-11 06:58:38,527 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:59:10,910 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 2
+2025-11-11 06:59:10,911 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:59:31,872 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 3
+2025-11-11 06:59:31,878 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 06:59:48,245 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 4
+2025-11-11 06:59:48,246 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 07:01:03,685 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 07:17:52,937 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 07:18:19,086 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 07:18:19,091 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 07:18:47,903 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 07:19:16,658 - SteelRebarPricePrediction - INFO - API_KEY: DeAcero Request made during the last hour: 0
+2025-11-11 07:19:16,659 - SteelRebarPricePrediction - INFO - Cache expired — recalculating prediction...
+2025-11-11 07:19:19,450 - SteelRebarPricePrediction - INFO - Prediction recalculated and cached successfully.
+2025-11-11 07:19:19,451 - SteelRebarPricePrediction - INFO - JSON Response: prediction_date=datetime.date(2025, 11, 12) predicted_price_usd_per_ton=577.33 currency='USD' unit='metric ton' model_confidence=0.95 timestamp=datetime.datetime(2025, 11, 11, 13, 19, 19, 450257, tzinfo=datetime.timezone.utc)
+2025-11-11 07:20:20,227 - SteelRebarPricePrediction - INFO - Configuration file loaded
+2025-11-11 07:20:37,142 - SteelRebarPricePrediction - INFO - Configuration file loaded
