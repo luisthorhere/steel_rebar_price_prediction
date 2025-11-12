@@ -12,7 +12,7 @@ import joblib
 
 from ..logger.logger import logger
 from ..data.get_data import (
-    correlational_feautures_historical_parallel,
+    correlational_feautures_historical,
     prepare_steel_rebar_data,
     merge_feautures,
 )
@@ -27,7 +27,7 @@ DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 
 def get_historical_data():
     steel_df = prepare_steel_rebar_data()
-    features_df = correlational_feautures_historical_parallel()
+    features_df = correlational_feautures_historical()
     merge_feautures(steel_df, features_df)
 
 

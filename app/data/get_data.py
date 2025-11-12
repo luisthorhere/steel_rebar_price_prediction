@@ -47,12 +47,13 @@ def _download_and_clean(ticker: str, name: str) -> pd.DataFrame:
         return name, pd.DataFrame(columns=["Date", name])
 
 
-def correlational_feautures_historical_parallel() -> dict[str, pd.DataFrame]:
-    """
-    Download 5-year daily data of commodities correlated with steel rebar prices in parallel.
 
-    Uses threads to fetch hot rolled coil, iron ore, USD/MXN, and coal data faster.
-    Returns a dictionary of cleaned DataFrames.
+def correlational_feautures_historical() -> dict[str, pd.DataFrame]:
+    """
+    Download 5-year daily data of commodities correlated with steel rebar prices **synchronously**.
+
+    Fetches hot rolled coil, iron ore, USD/MXN, and coal one by one (no concurrency).
+    Returns a dictionary of cleaned DataFrames keyed by the friendly variable name.
     """
     symbols = {
         "HRC=F": "hot_rolled_coil",
@@ -62,11 +63,12 @@ def correlational_feautures_historical_parallel() -> dict[str, pd.DataFrame]:
     }
 
     data = {}
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-        futures = [executor.submit(_download_and_clean, t, n) for t, n in symbols.items()]
-        for future in concurrent.futures.as_completed(futures):
-            name, df = future.result()
-            data[name] = df
+
+    # Synchronous loop — one request at a time
+    for ticker, name in symbols.items():
+        # _download_and_clean debe devolver (name, df) tal como en tu versión concurrente
+        name_out, df = _download_and_clean(ticker, name)
+        data[name_out] = df
 
     return data
   
