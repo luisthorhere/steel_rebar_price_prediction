@@ -4,7 +4,8 @@ import time
 from ..config.config import SETTINGS
 from ..logger.logger import logger
 from .utils import (
-    get_latest_features, 
+    get_latest_features,
+    build_latest_row,
     make_prediction,
     load_model
 )
@@ -20,16 +21,11 @@ _cache_timestamp = 0
 
 def predict_random_forest():
     global _cached_prediction, _cache_timestamp
-
     current_time = time.time()
-    if (
-        _cached_prediction is not None
-        and (current_time - _cache_timestamp) < SETTINGS.cache_ttl
-    ):
-        logger.info(
-            "Using cached prediction (updated %.1f minutes ago)",
-            (current_time - _cache_timestamp) / 60,
-        )
+
+    if (_cached_prediction is not None
+        and (current_time - _cache_timestamp) < SETTINGS.cache_ttl):
+        logger.info("Using cached prediction (updated %.1f minutes ago)", (current_time - _cache_timestamp)/60)
         return _cached_prediction
 
     logger.info("Cache expired — recalculating prediction...")
@@ -41,14 +37,14 @@ def predict_random_forest():
         "COAL": "coal",
     }
 
-    model, mape = load_model(MODEL_PATH)
-    X_latest, last_feat_date = get_latest_features(symbols)
+    model, mape, feat_names = load_model(MODEL_PATH)
+    X_drivers, last_feat_date = get_latest_features(symbols)
+    X_latest = build_latest_row(symbols, last_feat_date, feat_names)
+
     response = make_prediction(model, X_latest, mape, last_feat_date)
 
     _cached_prediction = response
     _cache_timestamp = current_time
-
     logger.info("Prediction recalculated and cached successfully.")
     logger.info("JSON Response: %s", response)
-
     return response

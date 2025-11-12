@@ -13,7 +13,7 @@ router = APIRouter(prefix="/predict", tags=["Steel"])
 
 
 @router.get("/steel-rebar-price/", dependencies=[Depends(verify_api_key)])
-async def steel_rebar_price():
+def steel_rebar_price():
     steel_price = predict_random_forest()
     return steel_price
 

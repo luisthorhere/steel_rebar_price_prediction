@@ -64,9 +64,7 @@ def correlational_feautures_historical() -> dict[str, pd.DataFrame]:
 
     data = {}
 
-    # Synchronous loop — one request at a time
     for ticker, name in symbols.items():
-        # _download_and_clean debe devolver (name, df) tal como en tu versión concurrente
         name_out, df = _download_and_clean(ticker, name)
         data[name_out] = df
 
@@ -84,7 +82,6 @@ def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]
 
     merged = steel.copy()
 
-    # Une cada feature usando el último valor disponible en el pasado
     for name, df in feautures.items():
         feat = df.copy()
         feat["Date"] = pd.to_datetime(feat["Date"])
@@ -97,18 +94,14 @@ def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]
             direction="backward",
         ).set_index("Date")
 
-    # Solo forward fill (sin bfill)
     merged = merged.ffill()
 
-    # Crear la columna objetivo del día siguiente
     if "steel_rebar" not in merged.columns:
         raise KeyError("Falta la columna 'steel_rebar' tras el merge.")
     merged["steel_rebar_next"] = merged["steel_rebar"].shift(-1)
 
-    # Eliminar filas sin valor objetivo
     dataset_model = merged.dropna(subset=["steel_rebar_next"]).reset_index()
 
-    # Guardar el dataset final
     model_data = os.path.join(base_path, "dataset_model_ready.csv")
     dataset_model.to_csv(model_data, index=False)
     logger.info("Training data correctly saved")
