@@ -75,37 +75,40 @@ def correlational_feautures_historical() -> dict[str, pd.DataFrame]:
 
 def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]):
     """
-    Merges the main steel rebar dataset with multiple feature DataFrames by date.
-
-    Aligns all data on the "Date" index, checks feature names, merges using left joins,
-    fills missing values (forward/backward), and saves intermediate CSVs.
-    Also creates the target column `steel_rebar_next` for model training.
+    Une los datos del acero con sus features por fecha (sin bfill ni fuga de futuro)
+    y guarda el dataset final listo para entrenamiento.
     """
-    steel_idx = steel_data.set_index("Date").sort_index()
-    merged = steel_idx.copy()
+    steel = steel_data.copy()
+    steel["Date"] = pd.to_datetime(steel["Date"])
+    steel = steel.sort_values("Date").set_index("Date")
 
+    merged = steel.copy()
+
+    # Une cada feature usando el último valor disponible en el pasado
     for name, df in feautures.items():
-        df_idx = df.set_index("Date").sort_index()
+        feat = df.copy()
+        feat["Date"] = pd.to_datetime(feat["Date"])
+        feat = feat.sort_values("Date")[["Date", name]]
 
-        cols_ok = [c for c in df_idx.columns if c == name]
-        if len(cols_ok) != 1:
-            raise ValueError(
-                f"The expected column '{name}' for feauture {name}, getting: {list(df_idx.columns)}"
-            )
-        merged = merged.join(df_idx, how="left")
-    logger.info("Correctly merging all the data")
-    merged_ffill = merged.ffill().bfill()
-    raw_data = os.path.join(base_path, "merged_steel_dataset_raw.csv")
-    filled_data = os.path.join(base_path, "merged_steel_dataset_filled.csv")
-    merged.reset_index().to_csv(raw_data, index=False)
-    merged_ffill.reset_index().to_csv(filled_data, index=False)
+        merged = pd.merge_asof(
+            merged.reset_index().sort_values("Date"),
+            feat.sort_values("Date"),
+            on="Date",
+            direction="backward",
+        ).set_index("Date")
 
-    df_predict = merged_ffill.copy()
-    df_predict["steel_rebar_next"] = df_predict["steel_rebar"].shift(-1)
+    # Solo forward fill (sin bfill)
+    merged = merged.ffill()
 
-    corr_next = df_predict.drop(columns=["steel_rebar"]).corr(method="pearson")
+    # Crear la columna objetivo del día siguiente
+    if "steel_rebar" not in merged.columns:
+        raise KeyError("Falta la columna 'steel_rebar' tras el merge.")
+    merged["steel_rebar_next"] = merged["steel_rebar"].shift(-1)
 
-    dataset_model = df_predict.dropna(subset=["steel_rebar_next"]).reset_index()
+    # Eliminar filas sin valor objetivo
+    dataset_model = merged.dropna(subset=["steel_rebar_next"]).reset_index()
+
+    # Guardar el dataset final
     model_data = os.path.join(base_path, "dataset_model_ready.csv")
     dataset_model.to_csv(model_data, index=False)
     logger.info("Training data correctly saved")
