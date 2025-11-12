@@ -1,4 +1,3 @@
-import concurrent.futures
 import yfinance as yf
 import pandas as pd
 import os
@@ -73,8 +72,9 @@ def correlational_feautures_historical() -> dict[str, pd.DataFrame]:
 
 def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]):
     """
-    Une los datos del acero con sus features por fecha (sin bfill ni fuga de futuro)
-    y guarda el dataset final listo para entrenamiento.
+    Merges steel price data with its feature variables by date 
+    (without backfilling or data leakage into the future)
+    and saves the final dataset ready for model training.
     """
     steel = steel_data.copy()
     steel["Date"] = pd.to_datetime(steel["Date"])
