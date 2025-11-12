@@ -4,9 +4,9 @@ import time
 from ..config.config import SETTINGS
 from ..logger.logger import logger
 from .utils import (
-    get_latest_features,
-    build_latest_row,
-    make_prediction,
+    get_latest_features, 
+    build_latest_row, 
+    make_prediction, 
     load_model
 )
 
@@ -19,13 +19,19 @@ DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 _cached_prediction = None
 _cache_timestamp = 0
 
+
 def predict_random_forest():
     global _cached_prediction, _cache_timestamp
     current_time = time.time()
 
-    if (_cached_prediction is not None
-        and (current_time - _cache_timestamp) < SETTINGS.cache_ttl):
-        logger.info("Using cached prediction (updated %.1f minutes ago)", (current_time - _cache_timestamp)/60)
+    if (
+        _cached_prediction is not None
+        and (current_time - _cache_timestamp) < SETTINGS.cache_ttl
+    ):
+        logger.info(
+            "Using cached prediction (updated %.1f minutes ago)",
+            (current_time - _cache_timestamp) / 60,
+        )
         return _cached_prediction
 
     logger.info("Cache expired — recalculating prediction...")

@@ -50,9 +50,9 @@ def _download_and_clean(ticker: str, name: str) -> pd.DataFrame:
 
 def correlational_feautures_historical() -> dict[str, pd.DataFrame]:
     """
-    Download 5-year daily data of commodities correlated with steel rebar prices **synchronously**.
+    Download 5-year daily data of commodities correlated with steel rebar prices.
 
-    Fetches hot rolled coil, iron ore, USD/MXN, and coal one by one (no concurrency).
+    Fetches hot rolled coil, iron ore, USD/MXN, and coal one by one .
     Returns a dictionary of cleaned DataFrames keyed by the friendly variable name.
     """
     symbols = {
