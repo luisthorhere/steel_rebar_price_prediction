@@ -14,13 +14,14 @@ from .utils import (
 BASE_DIR = Path(__file__).resolve().parent
 APP_DIR = BASE_DIR.parent
 MODEL_PATH = BASE_DIR / "steel_rebar_model_v2.pkl"
+MODEL_PATH2 = BASE_DIR / "steel_rebar_model_xgboost.pkl"
 DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 
 _cached_prediction = None
 _cache_timestamp = 0
 
 
-def predict_random_forest():
+def predict_xgboost():
     global _cached_prediction, _cache_timestamp
     current_time = time.time()
 
@@ -43,7 +44,7 @@ def predict_random_forest():
         "COAL": "coal",
     }
 
-    model, mape, feat_names = load_model(MODEL_PATH)
+    model, mape, feat_names = load_model(MODEL_PATH2)
     X_drivers, last_feat_date = get_latest_features(symbols)
     X_latest = build_latest_row(symbols, last_feat_date, feat_names)
 

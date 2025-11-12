@@ -4,12 +4,12 @@ from fastapi import FastAPI, Request
 
 from app.api.router import router as steel_rebar_price
 from app.logger.logger import logger
-from app.model.predict import predict_random_forest
+from app.model.predict import predict_xgboost
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Setting up app...")
-    predict_random_forest()
+    predict_xgboost()
     logger.info("Cache updated for predictions")
     logger.info("Startup completed successfully")
     yield

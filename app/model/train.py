@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from xgboost import XGBRegressor
 from sklearn.metrics import (
     mean_absolute_error,
     mean_absolute_percentage_error,
@@ -7,6 +8,7 @@ from sklearn.metrics import (
 )
 from pathlib import Path
 import pandas as pd
+import numpy as np
 import joblib
 
 
@@ -21,7 +23,8 @@ from ..data.get_data import (
 # --- RUTAS BASE COMO Path ---
 BASE_DIR = Path(__file__).resolve().parent
 APP_DIR = BASE_DIR.parent
-MODEL_PATH = BASE_DIR / "steel_rebar_model_v2.pkl"
+MODEL_PATH = BASE_DIR / "steel_rebar_model_RF.pkl"
+MODEL_PATH2 = BASE_DIR / "steel_rebar_model_xgboost.pkl"
 DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 
 
@@ -97,3 +100,41 @@ def train_random_forest(X_train, X_test, y_train, y_test):
         MODEL_PATH
     )
     logger.info("RandomForest model saved at: %s", str(MODEL_PATH))
+
+def train_xgboost(X_train, X_test, y_train, y_test):
+
+    xgb = XGBRegressor(
+        n_estimators=800,
+        max_depth=6,
+        learning_rate=0.05,
+        subsample=0.9,
+        colsample_bytree=0.9,
+        reg_lambda=1.0,
+        objective="reg:squarederror",
+        random_state=42,
+        n_jobs=-1,
+        tree_method="hist",   
+    )
+
+    xgb.fit(
+        X_train, y_train,
+        eval_set=[(X_test, y_test)],
+        eval_metric="mae",
+        early_stopping_rounds=50,
+        verbose=False,
+    )
+
+    y_pred = xgb.predict(X_test)
+    mae  = mean_absolute_error(y_test, y_pred)
+    mape = float(np.mean(np.abs((y_test - y_pred) / y_test)) * 100)
+    r2   = r2_score(y_test, y_pred)
+
+    logger.info("MAE XGB: %.4f", mae)
+    logger.info("MAPE XGB: %.2f%%", mape)
+    logger.info("R2 XGB: %.4f", r2)
+
+    joblib.dump(
+        {"model": xgb, "r2": r2, "mape": mape, "features": list(X_train.columns)},
+        MODEL_PATH2
+    )
+    logger.info("XGBoost model saved at: %s", str(MODEL_PATH2))
