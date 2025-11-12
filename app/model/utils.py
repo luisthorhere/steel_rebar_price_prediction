@@ -11,14 +11,12 @@ from ..api.schema import SteelRebarPriceResponse
 base_path = os.path.dirname(__file__)
 
 
-
 # --- RUTAS BASE COMO Path ---
 BASE_DIR = Path(__file__).resolve().parent
 APP_DIR = BASE_DIR.parent
 MODEL_PATH = BASE_DIR / "steel_rebar_model_v2.pkl"
 DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
-STEEL_PATH = APP_DIR / "data" /  "steel_rebar_data.csv"
-
+STEEL_PATH = APP_DIR / "data" / "steel_rebar_data.csv"
 
 
 def last_close_and_date(ticker: str, lookback_days: int = 10):
@@ -37,9 +35,9 @@ def last_close_and_date(ticker: str, lookback_days: int = 10):
     df = df.dropna()
     if df.empty:
         raise ValueError(f"No valid closing prices found for {ticker}.")
-    last_date = df.index[-1]
-    last_val = float(df["Close"].iloc[-1])
-    return last_val, last_date
+    last_close_date = df.index[-1]
+    last_close_value = float(df["Close"].iloc[-1])
+    return last_close_value, last_close_date
 
 
 def load_model(path):
@@ -64,70 +62,86 @@ def make_prediction(
     )
 
 
-def get_latest_features(symbols: dict[str, str], lookback_days: int = 10) -> tuple[pd.DataFrame, date]:
+def get_latest_features(
+    symbols: dict[str, str], lookback_days: int = 10
+) -> tuple[pd.DataFrame, date]:
     """
     Fetch and validate the latest feature values from Yahoo Finance sequentially (synchronous version).
     Downloads each ticker one by one.
     """
-    values, dates = {}, []
+    feature_values = {}
+    feature_dates = []
 
-    for ticker, name in symbols.items():
-        v, d = last_close_and_date(ticker, lookback_days)
-        if v is None or pd.isna(v):
-            raise ValueError(f"Null value for {name}")
-        if d is None:
-            raise ValueError(f"Null date for {name}")
-        values[name] = float(v)
-        dates.append(pd.to_datetime(d))
+    for ticker_symbol, feature_name in symbols.items():
+        latest_value, latest_date = last_close_and_date(ticker_symbol, lookback_days)
+        if latest_value is None or pd.isna(latest_value):
+            raise ValueError(f"Null value for {feature_name}")
+        if latest_date is None:
+            raise ValueError(f"Null date for {feature_name}")
 
-    X_latest = pd.DataFrame([[values[c] for c in values.keys()]], columns=list(values.keys()))
-    return X_latest, max(dates)
+        feature_values[feature_name] = float(latest_value)
+        feature_dates.append(pd.to_datetime(latest_date))
+
+    X_latest = pd.DataFrame(
+        [[feature_values[c] for c in feature_values.keys()]],
+        columns=list(feature_values.keys()),
+    )
+    return X_latest, max(feature_dates)
 
 
-def build_latest_row(symbols: dict[str, str],
-                     last_feat_date: pd.Timestamp,
-                     feature_names: list[str]) -> pd.DataFrame:
+def build_latest_row(
+    symbols: dict[str, str], last_feat_date: pd.Timestamp, feature_names: list[str]
+) -> pd.DataFrame:
     """
-    Arma el vector de features EXACTO usado en entrenamiento:
-    - drivers del día más reciente disponible (<= last_feat_date)
-    - lags/medias del steel_rebar calculados desde el CSV histórico
+    Builds the EXACT feature vector used during training:
+    - Includes the most recent available drivers (<= last_feat_date)
+    - Computes steel_rebar lags and moving averages from the historical CSV file
     """
-    # 1) Drivers desde Yahoo (ya los tienes en get_latest_features)
-    X_drivers, _ = get_latest_features(symbols)   # columnas: hot_rolled_coil, iron_ore, usd_mxn, coal
+    # Get data from yahoo finance
+    X_drivers, _ = get_latest_features(
+        symbols
+    )  # columns: hot_rolled_coil, iron_ore, usd_mxn, coal
 
-    # 2) Lags/MA de steel_rebar desde tu CSV histórico
+    # 2) Load steel reabar hsitorical data
     steel = pd.read_csv(STEEL_PATH, parse_dates=["Date"])
-    steel = (steel.rename(columns={"Price": "steel_rebar"})
-                  .dropna(subset=["Date"])
-                  .sort_values("Date")
-                  .set_index("Date"))
+    steel = (
+        steel.rename(columns={"Price": "steel_rebar"})
+        .dropna(subset=["Date"])
+        .sort_values("Date")
+        .set_index("Date")
+    )
 
-    # Solo datos hasta la fecha de features
+    # Use only data available up to the most recent feature date
     steel_cut = steel.loc[:last_feat_date].copy()
     if len(steel_cut) < 7:
-        raise ValueError("Histórico de steel_rebar insuficiente para calcular lags/MA.")
+        raise ValueError("Insufficient historical steel_rebar data to calculate lag and moving average features.")
 
     steel_cut["steel_lag1"] = steel_cut["steel_rebar"].shift(1)
     steel_cut["steel_lag2"] = steel_cut["steel_rebar"].shift(2)
     steel_cut["steel_lag3"] = steel_cut["steel_rebar"].shift(3)
-    steel_cut["steel_ma3"]  = steel_cut["steel_rebar"].rolling(3, min_periods=1).mean()
-    steel_cut["steel_ma7"]  = steel_cut["steel_rebar"].rolling(7, min_periods=1).mean()
+    steel_cut["steel_ma3"] = steel_cut["steel_rebar"].rolling(3, min_periods=1).mean()
+    steel_cut["steel_ma7"] = steel_cut["steel_rebar"].rolling(7, min_periods=1).mean()
 
-    last_row = steel_cut.iloc[-1][["steel_lag1","steel_lag2","steel_lag3","steel_ma3","steel_ma7"]]
+    # Take the last date data
+    last_row = steel_cut.iloc[-1][
+        ["steel_lag1", "steel_lag2", "steel_lag3", "steel_ma3", "steel_ma7"]
+    ]
 
-    # 3) Ensambla una sola fila con todo
+    # 3) Create a latest row data
     row = {**X_drivers.iloc[0].to_dict(), **last_row.to_dict()}
     X_latest_full = pd.DataFrame([row])
 
-    # 4) Reordenar/validar columnas al orden del modelo
+    # 4) Reorder columns in the same way as during model training
     missing = [c for c in feature_names if c not in X_latest_full.columns]
     if missing:
         raise ValueError(f"Faltan columnas para inferencia: {missing}")
 
     X_latest_full = X_latest_full.reindex(columns=feature_names)
 
-    # Asegura finitos
+    # Ensure finite values
     if X_latest_full.isna().any().any():
-        raise ValueError(f"NaN en vector de inferencia: {X_latest_full.isna().sum().to_dict()}")
+        raise ValueError(
+            f"NaN en vector de inferencia: {X_latest_full.isna().sum().to_dict()}"
+        )
 
     return X_latest_full

@@ -97,7 +97,7 @@ def merge_feautures(steel_data: pd.DataFrame, feautures: dict[str, pd.DataFrame]
     merged = merged.ffill()
 
     if "steel_rebar" not in merged.columns:
-        raise KeyError("Falta la columna 'steel_rebar' tras el merge.")
+        raise KeyError("The column 'steel_rebar' is missing after merge.")
     merged["steel_rebar_next"] = merged["steel_rebar"].shift(-1)
 
     dataset_model = merged.dropna(subset=["steel_rebar_next"]).reset_index()

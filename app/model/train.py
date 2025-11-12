@@ -32,7 +32,7 @@ def get_historical_data():
 
 
 def train_model_data():
-    # Carga
+    # load data
     if not DATA_PATH.exists():
         raise FileNotFoundError(f"Missing path to load the dataset: {DATA_PATH}")
 
@@ -40,37 +40,34 @@ def train_model_data():
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.sort_values("Date")
 
-    # --- Features de inercia del precio (clave para mejorar R²) ---
-    # Requiere que 'steel_rebar' esté en el CSV (tu merge ya la deja)
     if "steel_rebar" not in df.columns:
         raise KeyError("Column 'steel_rebar' not found in dataset_model_ready.csv")
 
-    # Lags (ayer, -2 y -3 días)
+    # Lags (-1, -2 y -3 days)
     df["steel_lag1"] = df["steel_rebar"].shift(1)
     df["steel_lag2"] = df["steel_rebar"].shift(2)
     df["steel_lag3"] = df["steel_rebar"].shift(3)
 
-    # Medias móviles cortas (suavizan ruido)
+    # Rolling averages (smooth out noise)
     df["steel_ma3"] = df["steel_rebar"].rolling(3, min_periods=1).mean()
     df["steel_ma7"] = df["steel_rebar"].rolling(7, min_periods=1).mean()
 
-    # Columnas finales (mantén tus 4 features originales + inercia)
-    base_feats = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
+    base_features = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
     inertia_feats = ["steel_lag1", "steel_lag2", "steel_lag3", "steel_ma3", "steel_ma7"]
     target = "steel_rebar_next"
 
-    missing_cols = [c for c in base_feats + [target, "steel_rebar"] if c not in df.columns]
+    missing_cols = [c for c in base_features + [target, "steel_rebar"] if c not in df.columns]
     if missing_cols:
         raise KeyError(f"Missing columns in the dataset: {missing_cols}")
 
-    # Elimina filas sin objetivo ni lags válidos
-    df = df.dropna(subset=[target, "steel_lag1"])  # lag1 basta para asegurar historia
+    # Remove the first day that has nan
+    df = df.dropna(subset=[target, "steel_lag1"]) 
 
-    features = base_feats + inertia_feats
+    features = base_features + inertia_feats
     X = df[features]
     y = df[target]
 
-    # Split temporal (ya usabas shuffle=False; mantenemos 80/20 por índice)
+    # Split train data and test
     split_idx = int(len(df) * 0.8)
     X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
     y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
