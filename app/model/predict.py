@@ -5,7 +5,8 @@ from ..config.config import SETTINGS
 from ..logger.logger import logger
 from .utils import (
     get_latest_features, 
-    make_prediction,
+    build_latest_row, 
+    make_prediction, 
     load_model
 )
 
@@ -18,10 +19,11 @@ DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 _cached_prediction = None
 _cache_timestamp = 0
 
+
 def predict_random_forest():
     global _cached_prediction, _cache_timestamp
-
     current_time = time.time()
+
     if (
         _cached_prediction is not None
         and (current_time - _cache_timestamp) < SETTINGS.cache_ttl
@@ -41,14 +43,14 @@ def predict_random_forest():
         "COAL": "coal",
     }
 
-    model, mape = load_model(MODEL_PATH)
-    X_latest, last_feat_date = get_latest_features(symbols)
+    model, mape, feat_names = load_model(MODEL_PATH)
+    X_drivers, last_feat_date = get_latest_features(symbols)
+    X_latest = build_latest_row(symbols, last_feat_date, feat_names)
+
     response = make_prediction(model, X_latest, mape, last_feat_date)
 
     _cached_prediction = response
     _cache_timestamp = current_time
-
     logger.info("Prediction recalculated and cached successfully.")
     logger.info("JSON Response: %s", response)
-
     return response

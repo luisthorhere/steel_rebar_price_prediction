@@ -12,7 +12,7 @@ import joblib
 
 from ..logger.logger import logger
 from ..data.get_data import (
-    correlational_feautures_historical_parallel,
+    correlational_feautures_historical,
     prepare_steel_rebar_data,
     merge_feautures,
 )
@@ -27,34 +27,63 @@ DATA_PATH = APP_DIR / "data" / "dataset_model_ready.csv"
 
 def get_historical_data():
     steel_df = prepare_steel_rebar_data()
-    features_df = correlational_feautures_historical_parallel()
+    features_df = correlational_feautures_historical()
     merge_feautures(steel_df, features_df)
 
 
 def train_model_data():
-
+    # Carga
     if not DATA_PATH.exists():
         raise FileNotFoundError(f"Missing path to load the dataset: {DATA_PATH}")
 
     df = pd.read_csv(DATA_PATH)
-    features = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
+    df["Date"] = pd.to_datetime(df["Date"])
+    df = df.sort_values("Date")
+
+    # --- Features de inercia del precio (clave para mejorar R²) ---
+    # Requiere que 'steel_rebar' esté en el CSV (tu merge ya la deja)
+    if "steel_rebar" not in df.columns:
+        raise KeyError("Column 'steel_rebar' not found in dataset_model_ready.csv")
+
+    # Lags (ayer, -2 y -3 días)
+    df["steel_lag1"] = df["steel_rebar"].shift(1)
+    df["steel_lag2"] = df["steel_rebar"].shift(2)
+    df["steel_lag3"] = df["steel_rebar"].shift(3)
+
+    # Medias móviles cortas (suavizan ruido)
+    df["steel_ma3"] = df["steel_rebar"].rolling(3, min_periods=1).mean()
+    df["steel_ma7"] = df["steel_rebar"].rolling(7, min_periods=1).mean()
+
+    # Columnas finales (mantén tus 4 features originales + inercia)
+    base_feats = ["hot_rolled_coil", "iron_ore", "usd_mxn", "coal"]
+    inertia_feats = ["steel_lag1", "steel_lag2", "steel_lag3", "steel_ma3", "steel_ma7"]
     target = "steel_rebar_next"
 
-    missing_cols = [c for c in features + [target] if c not in df.columns]
+    missing_cols = [c for c in base_feats + [target, "steel_rebar"] if c not in df.columns]
     if missing_cols:
         raise KeyError(f"Missing columns in the dataset: {missing_cols}")
 
+    # Elimina filas sin objetivo ni lags válidos
+    df = df.dropna(subset=[target, "steel_lag1"])  # lag1 basta para asegurar historia
+
+    features = base_feats + inertia_feats
     X = df[features]
     y = df[target]
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, shuffle=False
-    )
+    # Split temporal (ya usabas shuffle=False; mantenemos 80/20 por índice)
+    split_idx = int(len(df) * 0.8)
+    X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
+    y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
+
     return X_train, X_test, y_train, y_test
 
 
 def train_random_forest(X_train, X_test, y_train, y_test):
-    rf = RandomForestRegressor(n_estimators=200, max_depth=8, random_state=42)
+    rf = RandomForestRegressor(
+        n_estimators=600, max_depth=15,
+        min_samples_split=3, min_samples_leaf=2,
+        max_features="sqrt", random_state=42, n_jobs=-1,
+    )
     rf.fit(X_train, y_train)
     y_pred_rf = rf.predict(X_test)
 
@@ -66,5 +95,8 @@ def train_random_forest(X_train, X_test, y_train, y_test):
     logger.info("MAPE RF: %.2f%%", mape)
     logger.info("R2 RF: %.4f", r2)
 
-    joblib.dump({"model": rf, "r2": r2, "mape": mape}, MODEL_PATH)
+    joblib.dump(
+        {"model": rf, "r2": r2, "mape": mape, "features": list(X_train.columns)},
+        MODEL_PATH
+    )
     logger.info("RandomForest model saved at: %s", str(MODEL_PATH))

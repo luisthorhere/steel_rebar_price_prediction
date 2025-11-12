@@ -13,12 +13,12 @@ router = APIRouter(prefix="/predict", tags=["Steel"])
 
 
 @router.get("/steel-rebar-price/", dependencies=[Depends(verify_api_key)])
-async def steel_rebar_price():
+def steel_rebar_price():
     steel_price = predict_random_forest()
     return steel_price
 
 
-@router.get("/random-forest-train/", include_in_schema=False)
+@router.get("/random-forest-train/")
 def random_forest():
     get_historical_data()
     X_train, X_test, y_train, y_test = train_model_data()
